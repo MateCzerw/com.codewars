@@ -12,7 +12,7 @@ public class Solution {
         return  IntStream
                 .range(1,s3)
                 .filter(number -> number % s1 == 0 && number % s2 == 0)
-                .mapToObj(number -> number)
+                .boxed()
                 .collect(Collectors.toList());
     }
 }
