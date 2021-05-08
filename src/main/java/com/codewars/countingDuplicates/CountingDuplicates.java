@@ -2,28 +2,26 @@ package com.codewars.countingDuplicates;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.function.UnaryOperator.identity;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 public class CountingDuplicates {
     public static int duplicateCount(String text) {
 
-        Map<Character,Integer> LetterAndAppearanceNumberInWord = new HashMap<>();
-
-        text
+        Map<Character,Long> LetterAndAppearanceNumberInWord =
+                text
                 .toLowerCase()
                 .chars()
                 .mapToObj( c -> (char) c)
-                .forEach(letter -> {
-                    if(LetterAndAppearanceNumberInWord.containsKey(letter))
-                        LetterAndAppearanceNumberInWord
-                                .put(letter,LetterAndAppearanceNumberInWord.get(letter) + 1);
-                    else LetterAndAppearanceNumberInWord
-                            .put(letter,1);
-                });
+                .collect(groupingBy(identity(), counting()));
 
         return (int) LetterAndAppearanceNumberInWord
-                        .entrySet()
+                        .values()
                         .stream()
-                        .filter(letter -> letter.getValue() > 1)
+                        .filter(value -> value > 1)
                         .count();
     }
 }
