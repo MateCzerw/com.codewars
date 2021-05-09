@@ -1,24 +1,8 @@
 package com.codewars.findTheNextPerfectSquare;
 
 public class FindTheNextPerfectSquare {
-    public static long findNextSquare(long number) {
-        long squareOfNumber = 1;
-
-        for (long i = 1; i * i < number; i++) {
-            squareOfNumber++;
-        }
-
-        // check if sq is perfect square
-        if(squareOfNumber * squareOfNumber != number) return -1;
-
-        do {
-            squareOfNumber++;
-        }
-        while (squareOfNumber * squareOfNumber < number);
-
-        return squareOfNumber * squareOfNumber;
+    public static long findNextSquare(long sq) {
+        return Math.sqrt(sq) % 1 != 0 ? -1 : (long) Math.pow(Math.sqrt(sq) + 1, 2);
     }
-
-
-
 }
+
