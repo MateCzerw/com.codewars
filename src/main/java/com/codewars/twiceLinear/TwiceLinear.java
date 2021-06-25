@@ -2,29 +2,21 @@ package com.codewars.twiceLinear;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class TwiceLinear {
     public static int dblLinear(int n) {
-        List<Integer> results = new LinkedList<>();
+        SortedSet<Integer> results = new TreeSet<>();
         results.add(1);
-        int x = 0;
-        int y = 0;
-        while (results.size() <= n) {
-            int a = 2 * results.get(x) + 1;
-            int b = 3 * results.get(y) + 1;
 
-            if (a > b) {
-                results.add(b);
-                y++;
-            } else if (a < b) {
-                results.add(a);
-                x++;
-            } else {
-                results.add(a);
-                x++;
-                y++;
-            }
+        for (int i = 0; i < n; i++) {
+            int x = results.first();
+            results.add( 2 * x + 1);
+            results.add( 3 * x + 1);
+            results.remove(x);
         }
-        return results.get(n);
+
+        return results.first();
     }
 }
