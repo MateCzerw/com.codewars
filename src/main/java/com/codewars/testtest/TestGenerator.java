@@ -8,7 +8,7 @@ public class TestGenerator {
         Map<String, Integer> mailsAndQuantity = new HashMap<>();
         String[] employeesNames = employees.split("; ");
         List<String> mails = Arrays.stream(employeesNames)
-                .map(e -> e.toLowerCase())
+                .map(String::toLowerCase)
                 .map(e -> {
                     String[] namesAndSurname = e.split(" ");
                     return namesAndSurname.length == 3
