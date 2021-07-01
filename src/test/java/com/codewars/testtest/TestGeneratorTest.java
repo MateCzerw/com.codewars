@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestGeneratorTest {
     @Test
     void shouldReturnListOfEmployees(){
-        String employees = "Adam Kruk; Adam Kruk; Adam Kruk-CPCA; Adam Michał Kruk; Zbigniew Stonoga; Agnieszka Patrycja Stonoga-Lebioda";
-        assertEquals(6, TestGenerator.solution(employees, "Pepco"));
+        String employees = "Adam Kowalski; Adam Kowalski; Adam Kowalski-Lewandowski; Adam Michał Kowalski; Zbigniew Stonoga; Agnieszka Patrycja Stonoga-Lebioda";
+        assertEquals("", TestGenerator.solution(employees, "Pepco"));
     }
 }
